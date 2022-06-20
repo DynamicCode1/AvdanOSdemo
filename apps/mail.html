@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        /* CSS used here will be applied after bootstrap.css */
+
+body{ margin-top:50px;}
+.nav-tabs .glyphicon:not(.no-margin) { margin-right:10px; }
+.tab-pane .list-group-item:first-child {border-top-right-radius: 0px;border-top-left-radius: 0px;}
+.tab-pane .list-group-item:last-child {border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}
+.tab-pane .list-group .checkbox { display: inline-block;margin: 0px; }
+.tab-pane .list-group input[type="checkbox"]{ margin-top: 2px; }
+.tab-pane .list-group .glyphicon { margin-right:5px; }
+.tab-pane .list-group .glyphicon:hover { color:#FFBC00; }
+a.list-group-item.read { color: #222;background-color: #F3F3F3; }
+hr { margin-top: 5px;margin-bottom: 10px; }
+.nav-pills>li>a {padding: 5px 10px;}
+
+.ad { padding: 5px;background: #F5F5F5;color: #222;font-size: 80%;border: 1px solid #E5E5E5; }
+.ad a.title {color: #15C;text-decoration: none;font-weight: bold;font-size: 110%;}
+.ad a.url {color: #093;text-decoration: none;}
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <div class="btn-group">
+            	<a href="#" class="btn btn-danger btn-primary btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Compose</a>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-10">
+            <!-- Split button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">
+                    <div class="checkbox" style="margin: 0;">
+                        <label>
+                            <input type="checkbox">
+                        </label>
+                    </div>
+                </button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">None</a></li>
+                    <li><a href="#">Read</a></li>
+                    <li><a href="#">Unread</a></li>
+                    <li><a href="#">Starred</a></li>
+                    <li><a href="#">Unstarred</a></li>
+                </ul>
+            </div>
+            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
+                &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</button>
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Mark all as read</a></li>
+                    <li class="divider"></li>
+                    <li class="text-center"><small class="text-muted">Select messages to see more actions</small></li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-default" data-toggle="tooltip" title="Tag">
+                &nbsp;<span class="glyphicon glyphicon-tag"></span>&nbsp;</button>
+				<button type="button" class="btn btn-default" data-toggle="tooltip" title="Menu">
+                &nbsp;<span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;</button>
+				
+				
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><span class="badge pull-right">32</span> Inbox </a>
+                </li>
+                <li><a href="#">Starred</a></li>                
+                <li><a href="#"><span class="badge pull-right">3</span>Drafts</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-10">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
+                </span>Primary</a></li>
+                <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-user"></span>
+                    Social</a></li>
+                <li><a href="#messages" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>
+                    Promotions</a></li>
+                <li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-plus no-margin">
+                </span></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                           <div class="checkbox">
+							   <label>
+								   <input type="checkbox">
+							   </label>        
+							</div>
+                                    
+							<span class="glyphicon glyphicon-star-empty"></span>
+							<span class="name" style="min-width: 120px;display: inline-block;">Jason Markus</span> 
+							<span class="">This is big title</span>
+							
+							<span class="text-muted" style="font-size: 11px;">- I saw that you had..</span>
+							<span class="badge">12:09 AM</span>
+							<span class="pull-right">
+								<span class="glyphicon glyphicon-paperclip"></span>
+							</span>
+						</a>
+                    </div>
+                </div>
+                <div class="tab-pane fade in" id="profile">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <span class="text-center">This tab is empty.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade in" id="messages">
+                    This tab is empty.
+				</div>
+                <div class="tab-pane fade in" id="settings">
+                    This tab is empty.
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

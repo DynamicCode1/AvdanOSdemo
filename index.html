@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            cursor: url("cursorr.png"), auto;
+            background-size: cover;
+            font-family: 'Fredoka', sans-serif !important;
+
+        }
+
+        .bottom {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        .center {
+            display: flex;
+
+        }
+
+        .blackglass {
+            backdrop-filter: blur(10px) saturate(200%);
+            -webkit-backdrop-filter: blur(5px) saturate(200%);
+            background-color: rgba(0, 0, 0, 0.6);
+            outline: 0px;
+
+            
+        }
+
+
+        .containers {
+            position: relative;
+            display: flex;
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            background-color: rgba(0, 0, 0, 0.72);
+            border-radius: 6px;
+            margin: 10px;
+        }
+
+        .apps img {
+            height: 40px;
+            width: 40px;
+            transition: .1s;
+            margin-top: 5px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        .apps img:hover {
+            transform: scale(1.1);
+        }
+
+
+        .actionbuttons img:hover {
+            transform: scale(1.1);
+        }
+
+        .actionbuttons img:active {
+
+            transform: scale(0.8);
+        }
+
+        .actionbuttons img {
+            width: 45px;
+            transition: .1s;
+        }
+        .actionbuttons{
+            margin-top: 3px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .apps img:active {
+
+            transform: scale(0.8);
+        }
+
+        .dt, .weather {
+            color: #fff;
+            font-size: 15px;
+
+        }
+        .dt{
+
+            
+        }
+        
+        .weather{
+            margin-left: 50px;
+        }
+        .noti {
+            padding: 10px;
+            padding-left: 12.5px;
+            padding-right: 12.5px;
+        }
+
+        .notify {
+            margin-top: 8px;
+            font-size: 20px;
+            color: #fff;
+            transition: .1s;
+        }
+
+        .noti:hover .notify {
+            transform: scale(1.2);
+        }
+
+        .noti:active .notify {
+            transform: scale(0.8);
+        }
+
+
+        .windowmanager {
+            height: 100vh;
+
+
+        }
+
+
+        .wb-min:hover,
+        .wb-max:hover,
+        .wb-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+
+        .dt {
+            margin: 5px;
+        }
+
+        #tem {
+            width: 20px;
+        }
+
+        .weather {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            color: #fff;
+        }
+
+        .acicon {
+            margin-top: 10px;
+            font-size: 24px;
+            color: #fff;
+            transition: .1s;
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+        .acicon:hover{
+            transform: scale(1.1);
+        }
+       
+
+        
+        .appimage img {
+            width: 40px;
+            margin: 5px;
+        }
+        
+
+        #hiop{
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            display: none;
+        }
+        .wb-close{
+            
+            border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+
+        }
+        .wb-close{
+    background-image: url(SVG/close.svg);
+    background-position: center;
+    background-size: 15px auto;
+    background-repeat: no-repeat;
+}
+.wb-max {
+    background-image: url(SVG/expand.svg);
+    background-position: center;
+    background-size: 15px auto;
+    background-repeat: no-repeat;
+
+}
+.wb-title{
+    border-radius: 5px;
+
+    
+}
+ .wb-min {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.wb-icon {
+    margin-right: -5px;
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 2px;
+    background: rgba(255, 255, 255, .1);
+    transform: scale(0.8);
+}
+iframe{
+
+}
+.wb-header{
+
+}
+.winbox{
+    border: none;
+     backdrop-filter: blur(15px) saturate(200%);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+            
+}
+.dop{
+            margin-right: -5px;
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 2px;
+    background: rgba(255, 255, 255, .1);
+    transform: scale(0.8);
+    display: flex;
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 90px;
+        }
+        .dop .threcons .icon img{
+            width: 20px;
+            margin-top: -2px;
+            padding-left: 2px;
+        }
+        .dop .threcons {
+            padding: 2px;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        .dop .threcons:hover{
+                        background-color: rgba(255, 255, 255, 0.1);
+
+        }
+        .wb-body{
+            background: none;
+            background-color: none;
+        }
+        .start-menu{
+    backdrop-filter: blur(10px) saturate(200%);
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 840px;
+    height: 609px;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    bottom: 9.6%;
+    transform: translate(-50%);
+    display: flex;
+    z-index: 1000000;
+}
+
+.start-menu:not(.show):not(.hide){
+    display: none;
+}
+.start-menu.show{
+    display: block;
+    animation: startMenuShow .4s ease;
+}
+
+.start-menu.hide{
+    display: block;
+    animation: startMenuHide .4s ease forwards;
+}
+
+.start-menu-tasks{
+    padding: 30px 25px 25px 25px;
+}
+
+.widgets{
+    width: 100%;
+    height: 133px;
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+.widgets .weather-widget{
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-widget .weather-details{
+    display: flex;
+    height: 40px;
+    align-items: center;
+    font-weight: 600;
+    margin-right: 30px;
+}
+
+.weather-details div{
+    position: relative;
+    left: -10px;
+}
+
+.widgets .task-widget{
+    padding: 10px 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-widget .tasks * .time-container{
+    display: flex;
+    align-items: center;
+}
+
+.task-widget .tasks * .time-container .time{
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.task-widget .tasks * .time-container .circle{
+    width: 10px;
+    border-radius: 100%;
+    margin-right: 5px;
+    height: 10px;
+    background-color: rgb(255, 81, 110);
+}
+
+.task-widget .tasks * .task-goal{
+    font-weight: 500;
+    font-size: 11px;
+    margin-top: 5px;
+    margin-left: 12px;
+}
+
+.task-widget .tasks > *:not(:last-child){
+    margin-bottom: 15px;
+}
+
+.task-widget h5{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+
+
+.widgets > *{
+    background-color: rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(255, 255, 255, 0.137);
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.widgets > *:not(:nth-child(3)){
+    margin-right: 8px;
+}
+
+.widgets .devices-widget{
+    display: flex;
+}
+
+.widgets .devices-widget > *{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.widgets .devices-widget > * > .device-icon{
+    padding: 7px;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.178);
+    border: 3px solid rgba(247, 247, 247, 0.26);
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.widgets .devices-widget > * > .device-name{
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.widgets .devices-widget > * > .device-battery-progress{
+    width: 60%;
+    border-radius: 100px;
+    height: 7px;
+    background-color: rgba(255, 255, 255, 0.062);
+    overflow: hidden;
+}
+
+.widgets .devices-widget > * > .device-battery-percent{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40px;
+}
+
+.devices-widget > * > .device-battery-progress .battery-bar{
+    height: 100%;
+    background-color: rgb(89, 255, 89);
+    border-radius: 100px;
+}
+
+.devices-widget > *:nth-child(1) > .device-battery-progress .battery-bar{
+    width: 25%;
+}
+
+.devices-widget > *:nth-child(2) > .device-battery-progress .battery-bar{
+    width: 42%;
+}
+
+.devices-widget > *:nth-child(3) > .device-battery-progress .battery-bar{
+    width: 50%;
+}
+.bar{
+    top: -10px;
+    position: absolute;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 100%;
+    background-color: dodgerblue;
+    width: 25%;
+}
+
+.widgets .devices-widget > *:not(:last-child){
+    margin-right: 7px;
+}
+
+.start-menu-tasks .apps{
+    color: white;
+    display: flex;
+}
+
+.start-menu-tasks .apps .pinned-apps{
+    margin-top: 20px;
+    padding-left: 15px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 40px 40px 40px 40px 40px 40px 40px;
+    column-gap: 30px;
+    font-size: 10px;
+}
+
+.start-menu-tasks .apps .pinned-apps > div:hover{
+    transform: scale(1.1);
+}
+
+.start-menu-tasks .apps .pinned-apps div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.1s;
+}
+
+.start-menu-tasks .apps .pinned-apps div img {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.start-menu-tasks .apps .pinned-apps > div:nth-child(n+1):nth-child(-n+7){
+    margin-bottom: 25px;
+}
+
+.apps .seperator{
+    background-color: rgba(255, 255, 255, 0.267);
+    width: 1px;
+    height: 330px;
+    margin-right: 20px;
+}
+
+.apps .activities .activities-grid{
+    margin-top: 10px;
+
+}
+
+.apps .activities .activities-grid > div{
+    width: 262px;
+    border-radius: 5px;
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+    height: 94px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.apps .activities .activities-grid > div .activity-description{
+    margin-top: -5px;
+    display: flex;
+    align-items: center;
+}
+
+.activities-grid > div .activity-description .title-container{
+    font-weight: 700;
+    margin-left: 11px;
+}
+
+.activities-grid > div .activity-description .title-container .title{
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+.activities-grid > div .activity-description .title-container .author{
+    font-size: 9px;
+}
+
+.activity-description .play, .activity-description .star{
+    font-size: 20px;
+}
+
+.activity-description .icons{
+    margin-left: 30px;
+    position: absolute;
+    display: flex;
+    right: 45px;
+}
+
+.activity-description .icons *:not(:last-child){
+    margin-right: 10px;
+}
+
+.apps .activities .activities-grid > div .activity-description .icon img{
+    width: 45px;
+}
+
+.start-menu-options{
+    background-color: rgba(0, 0, 0, 0.212);
+    width: 100%;
+    height: 62px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.start-menu-options .account{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.start-menu-options .account .account-icon{
+    font-size: 40px;
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+}
+
+.start-menu-options .account .account-name{
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.start-menu-options .shutdown-container{
+    display: flex;
+    color: white;
+    position: relative;
+    left: 30px;
+}
+
+.shutdown-container > div{
+    background-color: rgba(0, 0, 0, 0.308);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    border-radius: 3px;
+    padding: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.shutdown-container > div:not(:last-child){
+    margin-right: 10px;
+}
+
+.cloud-storage{
+    display: flex;
+    width: 147px;
+    padding: 10px 0;
+    height: 100%;
+    flex-direction: column;
+    padding-right: 5px;
+    padding-left: 5px;
+
+}
+
+.cloud-storage .cloud-storage-description{
+    display: flex;  
+    width: 100%;
+    height: 30px;
+}
+
+.cloud-storage .cloud-storage-description .storage-description{
+    width: 110px;
+    text-align: right;
+}
+
+.cloud-storage .cloud-storage-description .title{
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+}
+
+.cloud-storage .cloud-storage-description .icon{
+    font-size: 30px;
+    margin-left: 5px;
+    color: white;
+}
+
+.cloud-storage .cloud-storage-description .description{
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+}
+
+.cloud-storage .cloud-progress{
+    width: 100%;
+    height: 6px;
+    margin-top: 5px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.062);
+    
+ }
+ h6{
+    margin-top: -2px;
+
+ }
+
+ 
+   </style>
+    <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.0/dist/winbox.bundle.js" defer></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body background="wall.svg">
+<div id="hiop" onclick="hidefun()"></div>
+    <div class="start-menu" id="startmenu">
+        <div class="start-menu-tasks">
+            <div class="widgets">
+                <div class="weather-widget">
+                    <div class="weather-temperature">
+                        <h5>Tempreature</h5>
+                        <h3 class="weather-temp">24º</h3>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-description">Sunny</div>
+                        <img class="weather-icon" src="sun.svg">
+                    </div>
+                </div>
+                <div class="task-widget">
+                    <h5>Today</h5>
+                    <div class="tasks">
+                        <div class="task-1">
+                            <div class="time-container">
+                                <div class="circle"></div>
+                                <div class="time">12:00 - 13:00</div>
+                            </div>
+                            <div class="task-goal">
+                                Touch grass
+                            </div>
+                        </div>
+                        <div class="task-2">
+                            <div class="time-container">
+                                <div class="circle"></div>
+                                <div class="time">17:00 - 18:00</div>
+                            </div>
+                            <div class="task-goal">
+                                More programming
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="devices-widget">
+                    <div class="device-1">
+                        <div class="device-icon">
+                            <ion-icon name="phone-portrait-outline"></ion-icon>
+                        </div>
+                        <div class="device-name">
+                            Phone
+                        </div>
+                        <div class="device-battery-percent">
+                            <ion-icon name="flash"></ion-icon>
+                            25%
+                        </div>
+                        <div class="device-battery-progress">
+                            <div class="battery-bar"></div>
+                        </div>
+                    </div>
+                    <div class="device-2">
+                        <div class="device-icon">
+                            <ion-icon name="watch-outline"></ion-icon>
+                        </div>
+                        <div class="device-name">
+                            Apple Watch
+                        </div>
+                        <div class="device-battery-percent">
+                            <ion-icon name="flash"></ion-icon>
+                            42%
+                        </div>
+                        <div class="device-battery-progress">
+                            <div class="battery-bar"></div>
+                        </div>
+                    </div>
+                    <div class="device-3">
+                        <div class="device-icon">
+                            <ion-icon name="car-outline"></ion-icon>
+                        </div>
+                        <div class="device-name">
+                            Aventador
+                        </div>
+                        <div class="device-battery-percent">
+                            <ion-icon name="flash"></ion-icon>
+                            50%
+                        </div>
+                        <div class="device-battery-progress">
+                            <div class="battery-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="apps">
+                    <div class="pinned-apps-container">
+                        <h5>Pinned Apps</h5>
+                        <div class="pinned-apps">
+                            <div class="mail" onclick="mail()">
+                                <img src="SVG/Mail.svg">
+                                Mail
+                            </div>  
+                            <div class="photos" onclick="comingsoon()">
+                                <img src="SVG/photos.svg">
+                                Photos
+                            </div>
+                            <div class="lale" onclick="browser()">
+                                <img src="SVG/Lale.svg">
+                                Lale
+                            </div>
+                            <div class="calender" onclick="comingsoon()">
+                                <img src="SVG/calendar.svg">
+                                Calendar
+                            </div>
+                            <div class="notes" onclick="vscode()">
+                                <img src="SVG/notes.svg">
+                                Notes
+                            </div>
+                            <div class="message" onclick="chat()">
+                                <img src="SVG/messages.svg">
+                                Message
+                            </div>
+                            <div class="music" onclick="music()">
+                                <img src="SVG/music.svg">
+                                Music
+                            </div>
+                            <div class="movies" onclick="comingsoon()">
+                                <img src="SVG/videos.svg">
+                                Movies
+                            </div>
+                            <div class="settings" onclick="comingsoon()">
+                                <img src="SVG/settings.svg">
+                                Settings
+                            </div>
+                        </div>
+                </div>
+                <div class="seperator"></div>
+                <div class="activities">
+                    <h5>Pick up where you left off</h5>
+                    <div class="activities-grid">
+                        <div class="activity-1">
+                            <h6>Continue Listening</h6>
+                            <div class="activity-description">
+                                <div class="icon"><img src="SVG/music.svg"></div>
+                                <div class="title-container">
+                                    <div class="title">Dream Speedrun</div>
+                                    <div class="author">Dream</div>
+                                </div>
+                                <div class="icons">
+                                    <div class="play"><ion-icon name="play-outline"></ion-icon></div>
+                                    <div class="star"><ion-icon name="star-outline"></ion-icon></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="activity-2">
+                            <h6>Continue Broswing</h6>
+                            <div class="activity-description">
+                                <div class="icon"><img src="SVG/Lale.svg"></div>
+                                <div class="title-container">
+                                    <div class="title">Lale</div>
+                                    <div class="author">How to clear history</div>
+                                </div>
+                                <div class="icons">
+                                    <div class="star"><ion-icon name="star-outline"></ion-icon></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="activity-3">
+                            <h6>Continue Watching</h6>
+                            <div class="activity-description">
+                                <div class="icon"><img src="SVG/videos.svg"></div>
+                                <div class="title-container">
+                                    <div class="title">Movies</div>
+                                    <div class="author">Godzilla and King Kong</div>
+                                </div>
+                                <div class="icons">
+                                    <div class="play"><ion-icon name="play-outline"></ion-icon></div>
+                                    <div class="star"><ion-icon name="star-outline"></ion-icon></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="start-menu-options">
+            <div class="account">
+                <div class="account-icon"><ion-icon name="person-circle-outline"></ion-icon></div>
+                <div class="account-name">Dynamic Code</div>
+            </div>
+            <div class="shutdown-container">
+                <div class="settings"><ion-icon name="settings-outline"></ion-icon></div>
+                <div class="apps"><ion-icon name="apps-outline"></ion-icon></div>
+                <div class="shutdown"><ion-icon name="power-outline"></ion-icon></div>
+            </div>
+            <div class="cloud-storage">
+                <div class="cloud-storage-description">
+                    <div class="storage-description">
+                        <div class="title">Cloud Storage</div>
+                        <div class="description">252 GB used of 1 TB</div>
+                    </div>
+                    <div class="icon"><ion-icon name="cloud-outline"></ion-icon></div>
+                </div>
+                <div class="cloud-progress">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="center">
+            <div class="containers">
+                <div class="apps" onclick="files()"><img src="SVG/Explorer.svg" alt=""></div>
+                <div class="apps" onclick="mail()"><img src="SVG/mail.svg"></div>
+                <div class="apps" onclick="browser()"><img src="SVG/Lale.svg"></div>
+                <div class="apps" onclick="calculator()"><img src="SVG/calculator.svg"></div>
+                <div class="apps" onclick="files()"><img src="SVG/Calendar.svg"></div>
+                <div class="apps" onclick="vscode()"><img src="SVG/notes.svg"></div>
+                <div class="apps" onclick="settings()"><img src="SVG/settings.svg"></div>
+                <div class="apps" onclick="music()"><img src="SVG/music.svg"></div>
+                <div class="apps" onclick="chat()"><img src="SVG/Messages.svg"></div>
+
+            </div>
+            <div class="containers">
+                <div class="actionbuttons">
+                    <ion-icon name="search-outline" class="acicon"></ion-icon>
+                </div>
+                <div class="actionbuttons" onclick="strtmenu()" style="z-index: 1000;">
+                    <img src="logo.png" class="acicon">
+                </div>
+                <div class="actionbuttons">
+                    <ion-icon name="copy-outline" class="acicon"></ion-icon>
+                </div>
+            </div>
+            <div class="containers">
+                <div class="dt">
+                    <div class="time" id="time">10:48</div>
+                    <div class="date" id="date">sunday,March 13</div>
+                </div>
+                <div class="weather">&nbsp; <img src="sun.svg" id="tem">&nbsp;24°&nbsp;&nbsp; </div>
+            </div>
+            <div class="containers">
+                <div class="noti">
+                    <ion-icon class="notify" name="wifi-outline"></ion-icon>
+                </div>
+                <div class="noti">
+                    <ion-icon class="notify" name="bluetooth-outline"></ion-icon>
+                </div>
+                <div class="noti">
+                    <ion-icon class="notify" name="volume-high-outline"></ion-icon>
+                </div>
+                <div class="noti">
+                    <ion-icon class="notify" name="battery-full-outline"></ion-icon>
+                </div>
+                <div class="noti">
+                    <ion-icon class="notify" name="chevron-up-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="windowmanager">
+
+    </div>
+
+    <script>
+        
+        var hiop = document.getElementById("hiop");
+        var startmenu = document.getElementById("startmenu");
+        document.getElementById("date").innerHTML = moment().format('MMMM Do YYYY');
+        document.getElementById("time").innerHTML = moment().format('h:mm a');
+        function hidefun(){
+            startmenu.style.display = "none";
+            hiop.style.display = "none";
+        }
+        function strtmenu(){
+                if (startmenu.style.display === "block") {
+        		startmenu.style.display = "none";
+       		 hiop.style.display = "none";
+
+    }
+ else {
+        startmenu.style.display = "block";
+        hiop.style.display = "block";
+  }
+        }
+function dop(){
+            document.querySelector("iframe").allowtransparency = "true";
+// create new element
+const elem = document.createElement('div');
+elem.classList.add('dop');
+// add text
+elem.innerHTML = `
+<div class="threcons">
+            <div class="icon"><img src="SVG/Dock left.svg"></div>
+        </div>
+        <div class="threcons">
+            <div class="icon"><img src="SVG/Merge.svg"></div>
+        </div>
+        <div class="threcons">
+            <div class="icon"><img src="SVG/Dock right.svg"></div>
+        </div>
+`;
+
+// grab target element reference
+const target = document.querySelector('.wb-title');
+
+// insert the element before target element
+target.parentNode.insertBefore(elem, target);
+
+hidefun();
+        }
+        function vscode() {
+            new WinBox("VS Code", {
+
+                url: "https://vscode.dev/",
+                bottom: 80,
+                background: "#252526",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "60%",
+                height: "65%"
+            });
+            dop();
+        }
+
+        function yt() {
+            window.open(
+              "https://www.youtube.com/channel/UCQX3joIy_dVHl4v7A8mNWqQ?sub_confirmation=1", "_blank");
+        }
+
+        function browser() {
+            new WinBox("Chrome", {
+
+                url: "apps/chrome.html",
+                bottom: 80,
+                background: "#cbd5e0",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "60%",
+                height: "65%"
+            });
+            dop();
+        }
+
+        function chat() {
+            new WinBox("Mesages", {
+
+                url: "apps/chat.html",
+                bottom: 80,
+                
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "75%",
+                height: "87%"
+            });
+            dop();
+        }
+
+        function calculator() {
+            new WinBox("Calculator", {
+
+                url: "apps/calc.html",
+                bottom: 80,
+                background: "#1f1c3d",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "30%",
+                height: "100%"
+            });
+            dop();
+        }
+
+        function files() {
+            new WinBox("comingsoon", {
+
+                url: "comingsoon.html",
+                bottom: 80,
+                background: "",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "60%",
+                height: "65%"
+            });
+            dop();
+        }
+        function comingsoon() {
+            new WinBox("comingsoon", {
+
+                url: "comingsoon.html",
+                bottom: 80,
+                background: "",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "60%",
+                height: "65%"
+            });
+            dop();
+        }
+
+
+        function settings() {
+            new WinBox("Settings", {
+
+                url: "comingsoon.html",
+                bottom: 80,
+                background: "#1e608d",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "60%",
+                height: "65%"
+            });
+            dop();
+        }
+
+
+        function mail() {
+            new WinBox("mail", {
+
+                url: "apps/mail.html",
+                bottom: 80,
+                background: "#1e608d",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "60%",
+                height: "65%"
+            });
+            dop();
+        }
+
+        function music() {
+            new WinBox("Spotify(Not real)", {
+
+                url: "apps/spotify.html",
+                bottom: 80,
+                background: "#121212",
+                max: false,
+                class: ["no-full"],
+                x: "center",
+                y: "center",
+                width: "60%",
+                height: "65%"
+            });
+            dop();
+        }
+
+
+
+
+// create new element
+const elem = document.createElement('div');
+elem.classList.add('dop');
+// add text
+elem.innerText = 'test';
+
+// grab target element reference
+const target = document.querySelector('.wb-title');
+
+// insert the element before target element
+target.parentNode.insertBefore(elem, target);
+    </script>
+</body>
+
+</html>
