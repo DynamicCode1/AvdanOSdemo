@@ -67,7 +67,7 @@
             margin-right: 8px;
         }
 
-        .apps img:hover {
+        .bottom .apps img:hover {
             transform: scale(1.1);
         }
 
@@ -90,7 +90,7 @@
             margin-left: 5px;
             margin-right: 5px;
         }
-        .apps img:active {
+        .bottom .apps img:active {
 
             transform: scale(0.8);
         }
@@ -284,15 +284,7 @@ iframe{
 .start-menu:not(.show):not(.hide){
     display: none;
 }
-.start-menu.show{
-    display: block;
-    animation: startMenuShow .4s ease;
-}
 
-.start-menu.hide{
-    display: block;
-    animation: startMenuHide .4s ease forwards;
-}
 
 .start-menu-tasks{
     padding: 30px 25px 25px 25px;
@@ -479,7 +471,9 @@ iframe{
     column-gap: 30px;
     font-size: 10px;
 }
-
+.start-menu-tasks .apps .pinned-apps-container{
+    margin-top: -20px;
+}
 .start-menu-tasks .apps .pinned-apps > div:hover{
     transform: scale(1.1);
 }
@@ -667,8 +661,102 @@ iframe{
     margin-top: -2px;
 
  }
+.appsups{
+            display: flex;
+        }
+        .applayout{
+            margin: 5px;
+            border-radius: 5px;
+            width: 110px;
+            height: 105px;
+            background-color: rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(255, 255, 255, 0.137);
+            position: relative;
+            transition: 0.1s;
+        }
+        .applayout:active{
+            transform: scale(0.8);
+        }
+        .appicon{
+            background-color: rgba(255, 255, 255, 0.075);
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            border-radius: 5px;
+        }
+        .one{
+            justify-content: space-evenly;
+            display: flex;
+            align-items: center;
+        }
+        .one .appicon{
+            
+            height: 100px;
+            width: 50px;
+        }
+        .two{
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+        .two .appicon{
+            height: 100px;
+            width: 105px;
 
- 
+        }
+        .two .small{
+            border: 1px solid rgba(255, 255, 255, 0.137);
+            position: absolute;
+            height: 60px;
+            width: 45px;
+            margin-left: -50px;
+            margin-top: -15px;
+        }
+        .three{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .three .appicon{
+            width: 50px;
+            height: 100px;
+            margin-right: 5px;
+        }
+        .appicon .aplayimg{
+            height: 30px;
+        }
+        .three .updown{
+            height: 100px;
+            width: 70px;
+            justify-content: space-evenly;
+        }
+        .three .updown .appicon {
+            height: 47px;
+            width: 50px;
+            margin: 2.5px;
+
+        }
+        .four{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .four .appicon{
+            width: 50px;
+            height: 100px;
+            margin-left: 5px;
+        }
+        .four .updown{
+            margin-left: 2.5px;
+            height: 100px;
+            width: 70px;
+            justify-content: space-evenly;
+        }
+        .four .updown .appicon {
+            height: 47px;
+            width: 50px;
+            margin: 2.5px;
+        }
    </style>
     <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.0/dist/winbox.bundle.js" defer></script>
     <meta charset="UTF-8">
@@ -804,6 +892,35 @@ iframe{
                                 Settings
                             </div>
                         </div>
+                        <h5>App setups</h5>
+                            <div class="appsups">
+    <div class="applayout one" onclick="appsetupone();">
+            <div class="appicon"><img src="SVG/music.svg" class="aplayimg"></div>
+            <div class="appicon"><img src="SVG/notes.svg" class="aplayimg"></div>
+    </div>
+    <div class="applayout two">
+            <div class="appicon"><img src="SVG/lale.svg" class="aplayimg shife"></div>
+        <div class="apps">
+            <div class="appicon small"><img src="SVG/Mail.svg" class="aplayimg"></div>
+        </div>
+    </div>
+
+
+    <div class="applayout three">
+        <div class="updown">    
+                <div class="appicon"><img src="SVG/mail.svg" class="aplayimg"></div>
+                <div class="appicon"><img src="SVG/Music.svg" class="aplayimg"></div>
+        </div>
+            <div class="appicon"><img src="SVG/messages.svg" class="aplayimg"></div>
+    </div>
+    <div class="applayout four">
+            <div class="appicon"><img src="SVG/lale.svg" class="aplayimg"></div>
+        <div class="updown">
+            <div class="appicon"><img src="SVG/explorer.svg" class="aplayimg"></div>
+            <div class="appicon"><img src="SVG/Calendar.svg" class="aplayimg"></div>
+        </div>
+    </div>
+</div>
                 </div>
                 <div class="seperator"></div>
                 <div class="activities">
@@ -988,7 +1105,7 @@ hidefun();
         function vscode() {
             new WinBox("VS Code", {
 
-                url: "https://vscode.dev/",
+                url: "https://github1s.com/dynamiccode1/AvdanOSdemo",
                 bottom: 80,
                 background: "#252526",
                 max: false,
@@ -1135,7 +1252,37 @@ hidefun();
             dop();
         }
 
+        function appsetupone(){
+            new WinBox("Spotify(Not real)", {
 
+                url: "apps/spotify.html",
+                bottom: 80,
+                background: "#121212",
+                max: false,
+                class: ["no-full"],
+                x: "left",
+                y: "center",
+                width: "50%",
+                height: "100%"
+            });
+            dop();
+
+            new WinBox("VS Code", {
+
+                url: "https://github1s.com/dynamiccode1/AvdanOSdemo",
+                bottom: 80,
+                background: "#252526",
+                max: false,
+                class: ["no-full"],
+                x: "right",
+                y: "center",
+                width: "50%",
+                height: "100%"
+            });
+            dop();
+
+
+        }
 
 
 // create new element
