@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+<style>
+
+body {
+  margin: 0;
+  padding: 15px 20px;
+  min-height: 99%;
+  width: 100%;
+  min-width: 550px;
+  color: #519975;
+  background: #211D1B;
+  font-family: cursor, monospace;
+  overflow-x: hidden;
+}
+::selection {
+  color: #211830;
+  background-color: #519975;
+}
+::-moz-selection {
+  color: #211830;
+  background-color: #519975;
+}
+textarea {
+  left: -1000px;
+  position: absolute;
+}
+b {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* Cursor Start */
+.cursor {
+  font-size: 12px;
+  color: #73ABAD;
+  background-color: #73ABAD;
+  position: relative;
+  opacity: 1;
+  height: 1.5em;
+  width: 10px;
+  max-width: 10px;
+  transform: translateY(4px);
+  overflow: hidden;
+  text-indent: -5px;
+  display: inline-block;
+  text-decoration: blink;
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+#command {
+  cursor: text;
+  height: 50px;
+  color: #73ABAD;
+}
+#liner {
+  line-height: 1.3em;
+  margin-top: -2px;
+  animation: show 0.5s ease forwards;
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+#liner::before {
+  color: #519975;
+  content: "visitor@dynamiccode:~$";
+}
+#liner.password::before {
+  content: "Password:";
+}
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Cursor End */
+p {
+  display: block;
+  line-height: 1.3em;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  letter-spacing: 0.05em;
+  animation: typing 0.5s steps(30, end);
+}
+.no-animation {
+  animation: typing 0 steps(30, end);
+}
+.margin {
+  margin-left: 20px;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.index {
+  color: #DCDCCC;
+}
+.color2 {
+  color: #B89076;
+}
+.command {
+  color: #73ABAD;
+  text-shadow: 0 0 5px #73ABAD; 
+}
+.error {
+  color: #B89076;
+}
+.white {
+  color: #fff;
+}
+.inherit,
+a {
+  color: #9C8394;
+}
+a {
+  text-decoration: inherit;
+}
+a:hover {
+  background: #73ABAD;
+  color: #211830;
+}
+a:focus {
+  outline: 0;
+}
+
+</style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+ 
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dynamic code | Terminal</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="img/fav-icon.png" />
+  </head>
+  <body>
+    <div id="terminal">
+      <a id="before"></a>
+    </div>
+    <div id="command" onclick="$('texter').focus();">
+      <textarea
+        type="text"
+        id="texter"
+        onkeyup="typeIt(this, event)"
+        onkeydown="typeIt(this, event); 
+                   moveIt(this.value.length, event)"
+        onkeypress="typeIt(this, event);"
+        autofocus
+      ></textarea>
+      <div id="liner">
+        <span id="typer"></span><b class="cursor" id="cursor">¦</b>
+      </div>
+    </div>
+  
+
+<script>
+
+
+function $(elid) {
+    return document.getElementById(elid);
+  }
+  
+var cursor;
+window.onload = init;
+
+function init() {
+  cursor = $("cursor");
+  cursor.style.left = "0px";
+}
+
+function nl2br(txt) {
+  return txt.replace(/\n/g, '');
+}
+
+function typeIt(from, e) {
+  e = e || window.event;
+  var w = $("typer");
+  var tw = from.value;
+  if (!pw){
+    w.innerHTML = nl2br(tw);
+  }
+}
+
+function moveIt(count, e) {
+  e = e || window.event;
+  var keycode = e.keyCode || e.which;
+  if (keycode == 37 && parseInt(cursor.style.left) >= (0 - ((count - 1) * 10))) {
+    cursor.style.left = parseInt(cursor.style.left) - 10 + "px";
+  } else if (keycode == 39 && (parseInt(cursor.style.left) + 10) <= 0) {
+    cursor.style.left = parseInt(cursor.style.left) + 10 + "px";
+  }
+}
+
+function alert(txt) {
+  console.log(txt);
+}
+
+
+
+
+
+
+//commands
+
+var youtube = "https://www.youtube.com/channel/UCQX3joIy_dVHl4v7A8mNWqQ";
+var password = "dynamiccode";
+var github = "https://github.com/dynamiccode1/";
+var email = 'not found';
+
+whois = [
+  `hello world <br>
+  this is me`
+];
+
+whoami = [
+  "<br>",
+  "The paradox of â€œWho am I?â€ is: we never know, but, we constantly find out.",
+  "<br>"
+];
+
+social = [
+  "<br>",
+  'youtube        <a href="' + youtube + '" target="_blank">youtube/dynamic code' + "</a>",
+  'github         <a href="' + github + '" target="_blank">github/dynamiccode1' + "</a>",
+  "<br>"
+];
+
+secret = [
+  "<br>",
+  '<span class="command">sudo</span>           Only use if you\'re admin',
+  "<br>"
+];
+
+projects = [
+  "<br>",
+  "Still curating... most projects are offline, on GitHub, or confidential.",
+  "<br>"
+];
+
+help = [
+  "<br>",
+  '<span class="command">whois</span>          Who is Dynamic code?',
+  '<span class="command">whoami</span>         Who are you?',
+  '<span class="command">video</span>          View YouTube videos',
+  '<span class="command">social</span>         Display social networks',
+  '<span class="command">secret</span>         Find the password',
+  '<span class="command">projects</span>       View coding projects',
+  '<span class="command">history</span>        View command history',
+  '<span class="command">help</span>           You obviously already know what this does',
+  '<span class="command">email</span>          Do not email me',
+  '<span class="command">clear</span>          Clear terminal',
+  '<span class="command">banner</span>         Display the header',
+  "<br>",
+];
+
+banner = [
+  '<span class="index">Dynamic Code. All knights reserved.</span>',
+  `
+                }--O--{<br>
+                  [^]<br>
+                 /ooo\<br>
+ ______________:/o   o\:______________<br>
+|=|=|=|=|=|=|:A|":|||:"|A:|=|=|=|=|=|=|                Dynamic code<br>
+^""""""""""""""!::{o}::!""""""""""""""^<br>
+                \     /<br>
+                 \.../<br>
+      ____       "---"       ____<br>
+     |\/\/|=======|*|=======|\/\/|<br>
+     :----"       /-\       "----:<br>
+                 /ooo\<br>
+                #|ooo|#<br>
+                 \___/<br>
+  `,
+  "~~,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  '<span class="color2">Welcome to my interactive web terminal.</span>',
+  "<span class=\"color2\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color2\">.</span>",
+];
+
+
+
+//main
+var before = document.getElementById("before");
+var liner = document.getElementById("liner");
+var command = document.getElementById("typer"); 
+var textarea = document.getElementById("texter"); 
+var terminal = document.getElementById("terminal");
+
+var git = 0;
+var pw = false;
+let pwd = false;
+var commands = [];
+
+setTimeout(function() {
+  loopLines(banner, "", 80);
+  textarea.focus();
+}, 100);
+
+window.addEventListener("keyup", enterKey);
+
+console.log(
+  "%cYou hacked my password!ðŸ˜ ",
+  "color: #04ff00; font-weight: bold; font-size: 24px;"
+);
+console.log("%cPassword: '" + password + "' - I wonder what it does?ðŸ¤”", "color: grey");
+
+//init
+textarea.value = "";
+command.innerHTML = textarea.value;
+
+function enterKey(e) {
+  if (e.keyCode == 181) {
+    document.location.reload(true);
+  }
+  if (pw) {
+    let et = "*";
+    let w = textarea.value.length;
+    command.innerHTML = et.repeat(w);
+    if (textarea.value === password) {
+      pwd = true;
+    }
+    if (pwd && e.keyCode == 13) {
+      loopLines(secret, "color2 margin", 120);
+      command.innerHTML = "";
+      textarea.value = "";
+      pwd = false;
+      pw = false;
+      liner.classList.remove("password");
+    } else if (e.keyCode == 13) {
+      addLine("Wrong password", "error", 0);
+      command.innerHTML = "";
+      textarea.value = "";
+      pw = false;
+      liner.classList.remove("password");
+    }
+  } else {
+    if (e.keyCode == 13) {
+      commands.push(command.innerHTML);
+      git = commands.length;
+      addLine("visitor@dynamiccode:~$ " + command.innerHTML, "no-animation", 0);
+      commander(command.innerHTML.toLowerCase());
+      command.innerHTML = "";
+      textarea.value = "";
+    }
+    if (e.keyCode == 38 && git != 0) {
+      git -= 1;
+      textarea.value = commands[git];
+      command.innerHTML = textarea.value;
+    }
+    if (e.keyCode == 40 && git != commands.length) {
+      git += 1;
+      if (commands[git] === undefined) {
+        textarea.value = "";
+      } else {
+        textarea.value = commands[git];
+      }
+      command.innerHTML = textarea.value;
+    }
+  }
+}
+
+function commander(cmd) {
+  switch (cmd.toLowerCase()) {
+    case "help":
+      loopLines(help, "color2 margin", 80);
+      break;
+    case "whois":
+      loopLines(whois, "color2 margin", 80);
+      break;
+    case "whoami":
+      loopLines(whoami, "color2 margin", 80);
+      break;
+    case "video":
+      addLine("Opening YouTube...", "color2", 80);
+      newTab(youtube);
+      break;
+    case "sudo":
+      addLine("Oh no, you're not admin...", "color2", 80);
+      setTimeout(function() {
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      }, 1000); 
+      break;
+    case "social":
+      loopLines(social, "color2 margin", 80);
+      break;
+    case "secret":
+      liner.classList.add("password");
+      pw = true;
+      break;
+    case "projects":
+      loopLines(projects, "color2 margin", 80);
+      break;
+    case "password":
+      addLine("<span class=\"inherit\"> Lol! You're joking, right? You\'re gonna have to try harder than that!ðŸ˜‚</span>", "error", 100);
+      break;
+    case "history":
+      addLine("<br>", "", 0);
+      loopLines(commands, "color2", 80);
+      addLine("<br>", "command", 80 * commands.length + 50);
+      break;
+    case "email":
+      addLine('Opening mailto: error(No email found lol)', "color2", 80);
+      newTab(email);
+      break;
+    case "clear":
+      setTimeout(function() {
+        terminal.innerHTML = '<a id="before"></a>';
+        before = document.getElementById("before");
+      }, 1);
+      break;
+    case "banner":
+      loopLines(banner, "", 80);
+      break;
+    // socials
+    case "youtube":
+      addLine("Opening YouTube...", "color2", 80);
+      newTab(youtube);
+      break;
+    case "github":
+      addLine("Opening GitHub...", "color2", 0);
+      newTab(github);
+      break;
+    default:
+      addLine("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
+      break;
+  }
+}
+
+function newTab(link) {
+  setTimeout(function() {
+    window.open(link, "_blank");
+  }, 500);
+}
+
+function addLine(text, style, time) {
+  var t = "";
+  for (let i = 0; i < text.length; i++) {
+    if (text.charAt(i) == " " && text.charAt(i + 1) == " ") {
+      t += "&nbsp;&nbsp;";
+      i++;
+    } else {
+      t += text.charAt(i);
+    }
+  }
+  setTimeout(function() {
+    var next = document.createElement("p");
+    next.innerHTML = t;
+    next.className = style;
+
+    before.parentNode.insertBefore(next, before);
+
+    window.scrollTo(0, document.body.offsetHeight);
+  }, time);
+}
+
+function loopLines(name, style, time) {
+  name.forEach(function(item, index) {
+    addLine(item, style, index * time);
+  });
+}
+
+
+</script>
+
+
+  </body>
+</html>
