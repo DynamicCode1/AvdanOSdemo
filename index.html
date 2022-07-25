@@ -765,7 +765,7 @@ iframe{
     <title>Document</title>
 </head>
 
-<body background="wall.svg">
+<body background="wall.svg" onload="onstr()">
 <div id="hiop" onclick="hidefun()"></div>
     <div class="start-menu" id="startmenu">
         <div class="start-menu-tasks">
@@ -1117,7 +1117,8 @@ hidefun();
             });
             dop();
         }
-            new WinBox("joinus", {
+            function onstr(){
+                new WinBox("joinus", {
 
                 url: "https://avdanos.com",
                 bottom: 80,
@@ -1129,6 +1130,8 @@ hidefun();
                 width: "60%",
                 height: "65%"
             });
+            }
+        
         function yt() {
             window.open(
               "https://www.youtube.com/channel/UCQX3joIy_dVHl4v7A8mNWqQ?sub_confirmation=1", "_blank");
