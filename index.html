@@ -784,7 +784,7 @@ iframe{
  * ---------------------------------------------- */
 @keyframes slide-in-bottom{0%{transform:translateY(1000px) translateX(-50%); overflow: hidden; opacity:0}100%{;transform:translateY(0) translateX(-50%); overflow: hidden; opacity:1}}
    </style>
-    <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.0/dist/winbox.bundle.js" defer></script>
+    <script src="winbox/winbox.bundle.js" defer></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -897,9 +897,9 @@ iframe{
                                 <img src="SVG/Calendar.svg">
                                 Calendar
                             </div>
-                            <div class="notes" onclick="vscode()">
-                                <img src="SVG/notes.svg">
-                                Notes
+                            <div class="vscode" onclick="vscode()">
+                                <img src="SVG/vsc.svg">
+                                VSC
                             </div>
                             <div class="message" onclick="chat()">
                                 <img src="SVG/Messages.svg">
@@ -922,7 +922,7 @@ iframe{
                             <div class="appsups">
     <div class="applayout one" onclick="appsetupone();">
             <div class="appicon"><img src="SVG/music.svg" class="aplayimg"></div>
-            <div class="appicon"><img src="SVG/notes.svg" class="aplayimg"></div>
+            <div class="appicon"><img src="SVG/vsc.svg" class="aplayimg"></div>
     </div>
     <div class="applayout two">
             <div class="appicon"><img src="SVG/Lale.svg" class="aplayimg shife"></div>
@@ -1030,7 +1030,7 @@ iframe{
                 <div class="apps" onclick="browser()"><img src="SVG/Lale.svg"></div>
                 <div class="apps" onclick="calculator()"><img src="SVG/calculator.svg"></div>
                 <div class="apps" onclick="files()"><img src="SVG/Calendar.svg"></div>
-                <div class="apps" onclick="vscode()"><img src="SVG/notes.svg"></div>
+                <div class="apps" onclick="vscode()"><img src="SVG/vsc.svg"></div>
                 <div class="apps" onclick="settings()"><img src="SVG/settings.svg"></div>
                 <div class="apps" onclick="music()"><img src="SVG/music.svg"></div>
                 <div class="apps" onclick="chat()"><img src="SVG/Messages.svg"></div>
@@ -1104,27 +1104,6 @@ iframe{
         }
 function dop(){
             document.querySelector("iframe").allowtransparency = "true";
-// create new element
-const elem = document.createElement('div');
-elem.classList.add('dop');
-// add text
-elem.innerHTML = `
-<div class="threcons">
-            <div class="icon"><img src="SVG/Dock left.svg"></div>
-        </div>
-        <div class="threcons">
-            <div class="icon"><img src="SVG/Merge.svg"></div>
-        </div>
-        <div class="threcons">
-            <div class="icon"><img src="SVG/Dock right.svg"></div>
-        </div>
-`;
-
-// grab target element reference
-var target = document.querySelector('.wb-title');
-
-// insert the element before target element
-target.parentNode.insertBefore(elem, target);
 
 hidefun();
         }
@@ -1341,17 +1320,7 @@ var sortable3 = new Sortable(startmen, {
 
 
 
-// create new element
-const elem = document.createElement('div');
-elem.classList.add('dop');
-// add text
-elem.innerText = 'test';
 
-// grab target element reference
-const target = document.querySelector('.wb-title');
-
-// insert the element before target element
-target.parentNode.insertBefore(elem, target);
     </script>
 
 
