@@ -6,22 +6,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="https://momentjs.com/downloads/moment.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
+    
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <style>
+        @import url('https://rsms.me/inter/inter.css');
         * {
             margin: 0;
             padding: 0;
+            user-select: none;
         }
 
         body {
             overflow-y: hidden;
             cursor: url("cursorr.png"), auto;
             background-size: cover;
-            font-family: 'Fredoka', sans-serif !important;
+            font-family: 'Inter', sans-serif !important;
 
         }
 
@@ -41,10 +41,9 @@
         }
 
         .blackglass {
-            backdrop-filter: blur(10px) saturate(200%);
-            -webkit-backdrop-filter: blur(5px) saturate(200%);
-            background-color: rgba(0, 0, 0, 0.6);
-            outline: 0px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), rgba(0, 0, 0, 0.6);
+box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.25);
+backdrop-filter: blur(50px);
 
             
         }
@@ -74,11 +73,11 @@
         }
 
 
-        .actionbuttons img:hover {
+        .actionbuttons .acicon:hover {
             transform: scale(1.1);
         }
 
-        .actionbuttons img:active {
+        .actionbuttons .acicon:active {
 
             transform: scale(0.8);
         }
@@ -769,7 +768,47 @@ iframe{
 
 
 
-
+/* search bar css */
+.mainsearch{
+            transform: translate(50%,  100px);
+            color: #fff;
+            border-radius: 5px;
+            backdrop-filter: blur(15px) saturate(200%);
+    background-color: rgba(0, 0, 0, 0.7);
+           position: absolute;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 50%;
+           display: none;
+            overflow: hidden;
+        }
+        .mainsearch input {
+            width: 100%;
+            height: 40px;
+            outline: none;
+            border: none;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .mainsearch ul li {
+            color: #fff;
+            text-align: middle;
+            list-style-type: none;
+            padding: 10px;
+            display: flex;
+            transition: .5s;
+        }
+        .mainsearch ul li img{
+            
+            height: 25px;
+        }
+        .mainsearch ul li:hover{
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .mainsearch ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+        }
 
 
 .slide-in-bottom{animation:slide-in-bottom .5s }
@@ -793,6 +832,25 @@ iframe{
 
 <body background="wall.svg">
 <div id="hiop" onclick="hidefun()"></div>
+
+<!--- search ---->
+<div class="mainsearch" id="spotsearch">
+    <input type="text" id="myInput" autocomplete="off" onkeyup="myFunction()" placeholder="Search for anything.." title="Type in a name">
+
+<ul id="myUL">
+  <li><img src="SVG/Explorer.svg" alt=""><a href="#">Files</a></li>
+  <li><img src="SVG/mail.svg"><a href="#">Mail</a></li>
+  <li><img src="SVG/Lale.svg"><a href="#">Lale</a></li>
+  <li><img src="SVG/calculator.svg"><a href="#">Calculator</a></li>
+<li><img src="SVG/Calendar.svg"><a href="#">Calendar</a></li>
+  <li><img src="SVG/vsc.svg"><a href="#">VS Code</a></li>
+  <li><img src="SVG/settings.svg"><a href="#">Settings</a></li>
+  <li><img src="SVG/music.svg"><a href="#">Music</a></li>
+  <li><img src="SVG/Messages.svg"><a href="#">Messages</a></li>
+</ul>
+</div>
+
+
     <div class="start-menu slide-in-bottom" id="startmenu">
         <div class="start-menu-tasks">
             <div class="widgets">
@@ -893,7 +951,7 @@ iframe{
                                 <img src="SVG/Lale.svg">
                                 Lale
                             </div>
-                            <div class="calender" onclick="comingsoon()">
+                            <div class="calender" onclick="calendar()">
                                 <img src="SVG/Calendar.svg">
                                 Calendar
                             </div>
@@ -1029,7 +1087,7 @@ iframe{
                 <div class="apps" onclick="mail()"><img src="SVG/mail.svg"></div>
                 <div class="apps" onclick="browser()"><img src="SVG/Lale.svg"></div>
                 <div class="apps" onclick="calculator()"><img src="SVG/calculator.svg"></div>
-                <div class="apps" onclick="files()"><img src="SVG/Calendar.svg"></div>
+                <div class="apps" onclick="calendar()"><img src="SVG/Calendar.svg"></div>
                 <div class="apps" onclick="vscode()"><img src="SVG/vsc.svg"></div>
                 <div class="apps" onclick="settings()"><img src="SVG/settings.svg"></div>
                 <div class="apps" onclick="music()"><img src="SVG/music.svg"></div>
@@ -1037,7 +1095,7 @@ iframe{
 
             </div>
             <div class="containers">
-                <div class="actionbuttons">
+                <div class="actionbuttons" onclick="so()" style="z-index: 1000;">
                     <ion-icon name="search-outline" class="acicon"></ion-icon>
                 </div>
                 <div class="actionbuttons" onclick="strtmenu()" style="z-index: 1000;">
@@ -1082,212 +1140,247 @@ iframe{
     </div>
 
     <script>
-        
-        var hiop = document.getElementById("hiop");
-        var startmenu = document.getElementById("startmenu");
-        document.getElementById("date").innerHTML = moment().format('MMMM Do YYYY');
-        document.getElementById("time").innerHTML = moment().format('h:mm a');
-        function hidefun(){
-            startmenu.style.display = "none";
-            hiop.style.display = "none";
-        }
-        function strtmenu(){
-                if (startmenu.style.display === "block") {
-        		startmenu.style.display = "none";
-       		 hiop.style.display = "none";
+        var spotsearch = document.getElementById("spotsearch");
+var hiop = document.getElementById("hiop");
+var startmenu = document.getElementById("startmenu");
+document.getElementById("date").innerHTML = moment().format('MMMM Do YYYY');
+document.getElementById("time").innerHTML = moment().format('h:mm a');
 
-    }
- else {
+function hidefun() {
+    spotsearch.style.display = "none";
+    startmenu.style.display = "none";
+    hiop.style.display = "none";
+}
+
+function strtmenu() {
+    if (startmenu.style.display === "block") {
+        startmenu.style.display = "none";
+        hiop.style.display = "none";
+
+    } else {
         startmenu.style.display = "block";
         hiop.style.display = "block";
-  }
-        }
-function dop(){
-            document.querySelector("iframe").allowtransparency = "true";
-
-hidefun();
-        }
-        function vscode() {
-            new WinBox("VS Code", {
-
-                url: "https://github1s.com/dynamiccode1/AvdanOSdemo",
-                bottom: 80,
-                background: "#252526",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "60%",
-                height: "65%"
-            });
-            dop();
-        }
-
-        function yt() {
-            window.open(
-              "https://www.youtube.com/channel/UCQX3joIy_dVHl4v7A8mNWqQ?sub_confirmation=1", "_blank");
-        }
-
-        function browser() {
-            new WinBox("Chrome", {
-
-                url: "apps/chrome.html",
-                bottom: 80,
-                background: "#cbd5e0",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "60%",
-                height: "65%"
-            });
-            dop();
-        }
-
-        function chat() {
-            new WinBox("Mesages", {
-
-                url: "apps/chat.html",
-                bottom: 80,
-                
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "75%",
-                height: "87%"
-            });
-            dop();
-        }
-
-        function calculator() {
-            new WinBox("Calculator", {
-
-                url: "apps/calc.html",
-                bottom: 80,
-                background: "#1f1c3d",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "30%",
-                height: "100%"
-            });
-            dop();
-        }
-
-        function files() {
-            new WinBox("comingsoon", {
-
-                url: "comingsoon.html",
-                bottom: 80,
-                background: "",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "60%",
-                height: "65%"
-            });
-            dop();
-        }
-        function comingsoon() {
-            new WinBox("comingsoon", {
-
-                url: "comingsoon.html",
-                bottom: 80,
-                background: "",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "60%",
-                height: "65%"
-            });
-            dop();
-        }
+    }
+}
 
 
-        function settings() {
-            new WinBox("Settings", {
 
-                url: "comingsoon.html",
-                bottom: 80,
-                background: "#1e608d",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "60%",
-                height: "65%"
-            });
-            dop();
-        }
+function so() {
+    if (spotsearch.style.display === "block") {
+        spotsearch.style.display = "none";
+        hiop.style.display = "none";
+
+    } else {
+        spotsearch.style.display = "block";
+        hiop.style.display = "block";
+    }
+}
 
 
-        function mail() {
-            new WinBox("mail", {
+function dop() {
+    document.querySelector("iframe").allowtransparency = "true";
 
-                url: "apps/mail.html",
-                bottom: 80,
-                background: "#1e608d",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "60%",
-                height: "65%"
-            });
-            dop();
-        }
+    hidefun();
+}
 
-        function music() {
-            new WinBox("Spotify(Not real)", {
+function vscode() {
+    new WinBox("VS Code", {
 
-                url: "apps/spotify.html",
-                bottom: 80,
-                background: "#121212",
-                max: false,
-                class: ["no-full"],
-                x: "center",
-                y: "center",
-                width: "60%",
-                height: "65%"
-            });
-            dop();
-        }
+        url: "https://github1s.com/dynamiccode1/AvdanOSdemo",
+        bottom: 80,
+        background: "#252526",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
 
-        function appsetupone(){
-            new WinBox("Spotify(Not real)", {
+function yt() {
+    window.open(
+        "https://www.youtube.com/channel/UCQX3joIy_dVHl4v7A8mNWqQ?sub_confirmation=1", "_blank");
+}
 
-                url: "apps/spotify.html",
-                bottom: 80,
-                background: "#121212",
-                max: false,
-                class: ["no-full"],
-                x: "left",
-                y: "center",
-                width: "50%",
-                height: "100%"
-            });
-            dop();
+function browser() {
+    new WinBox("Chrome", {
 
-            new WinBox("VS Code", {
+        url: "apps/chrome.html",
+        bottom: 80,
+        background: "#cbd5e0",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
 
-                url: "https://github1s.com/dynamiccode1/AvdanOSdemo",
-                bottom: 80,
-                background: "#252526",
-                max: false,
-                class: ["no-full"],
-                x: "right",
-                y: "center",
-                width: "50%",
-                height: "100%"
-            });
-            dop();
+function chat() {
+    new WinBox("Mesages", {
+
+        url: "apps/chat.html",
+        bottom: 80,
+
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "75%",
+        height: "87%"
+    });
+    dop();
+}
+
+function calculator() {
+    new WinBox("Calculator", {
+
+        url: "apps/calc.html",
+        bottom: 80,
+        background: "#1f1c3d",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "30%",
+        height: "100%"
+    });
+    dop();
+}
+
+function files() {
+    new WinBox("comingsoon", {
+
+        url: "comingsoon.html",
+        bottom: 80,
+        background: "",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
+
+function comingsoon() {
+    new WinBox("comingsoon", {
+
+        url: "comingsoon.html",
+        bottom: 80,
+        background: "",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
 
 
-        }
+function settings() {
+    new WinBox("Settings", {
+
+        url: "comingsoon.html",
+        bottom: 80,
+        background: "#1e608d",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
+
+
+function mail() {
+    new WinBox("mail", {
+
+        url: "apps/mail.html",
+        bottom: 80,
+        background: "#1e608d",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
+
+function music() {
+    new WinBox("Spotify(Not real)", {
+
+        url: "apps/spotify.html",
+        bottom: 80,
+        background: "#121212",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
+
+function calendar() {
+    new WinBox("calendar", {
+
+        url: "apps/calendar.html",
+        bottom: 80,
+        background: "",
+        max: false,
+        class: ["no-full"],
+        x: "center",
+        y: "center",
+        width: "60%",
+        height: "65%"
+    });
+    dop();
+}
+
+function appsetupone() {
+    new WinBox("Spotify(Not real)", {
+
+        url: "apps/spotify.html",
+        bottom: 80,
+        background: "#121212",
+        max: false,
+        class: ["no-full"],
+        x: "left",
+        y: "center",
+        width: "50%",
+        height: "100%"
+    });
+    dop();
+
+    new WinBox("VS Code", {
+
+        url: "https://github1s.com/dynamiccode1/AvdanOSdemo",
+        bottom: 80,
+        background: "#252526",
+        max: false,
+        class: ["no-full"],
+        x: "right",
+        y: "center",
+        width: "50%",
+        height: "100%"
+    });
+    dop();
+
+
+}
 
 //sortable lists
 var sorta = document.getElementById('appdock');
@@ -1308,7 +1401,11 @@ var sortable3 = new Sortable(startmen, {
     animation: 150
 });
 
-
+var tabs = document.getElementById('swpa');
+var sortable4 = new Sortable(tabs, {
+    swapThreshold: 1,
+    animation: 150
+});
 
 
 
@@ -1320,6 +1417,23 @@ var sortable3 = new Sortable(startmen, {
 
 
 
+//searchfun
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
 
     </script>
 
