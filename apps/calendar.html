@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>calendar</title>
+  
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+  
+<style>
+@import url('https://rsms.me/inter/inter.css');body {
+	font-family: 'Inter', sans-serif;
+	display: flex;
+	max-height: 100vh;
+	max-width: 100vw;
+	background: transparent;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+::selection {
+	background: #007965;
+	color: #FFF;
+}
+#left-col {
+	background: rgba(255, 255, 255, 0.05);
+	height: 100vh;
+}
+#left-col img {
+	height: auto;
+	width: 12rem;
+}
+#temp {
+	color: #D5D5D5;
+	font-size: 3em;
+	font-weight: 600;
+}
+#date {
+	color: #D5D5D5;
+	font-size: 1.25em;
+	font-weight: 600;
+}
+#main-col {
+	background: transparent;
+}
+#month {
+	color: #fff;
+	font-size: 3.5em;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+#calendar {
+	background: ;
+	border-radius: 2rem;
+	height: 10rem;
+}
+/*CALENDAR*/
+#weekdays div {
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1em;
+	font-weight: 500;
+	text-transform: uppercase;
+	width: calc(100%/7);
+}
+#days div {
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2em;
+	font-weight: 400;
+	height: 4rem;
+	width: calc(100%/7);
+}
+#days .prev-date, #days .next-date {
+	opacity: .6;
+}
+#days #today-span {
+	background: #007965;
+	border-radius: 50%;
+	color: #FFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 3rem;
+	width: 3rem;
+}
+#days #calendar-span {
+	background: transparent;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 3rem;
+	width: 3rem;
+	transition: .5s
+}
+#days #calendar-span:hover:not(#today) {
+	background: #9DD6DF;
+	cursor: pointer;
+	transition: .5s;
+}
+
+
+@media screen and (max-width: 750px) {
+	#left-col {
+		display: none !important;
+
+		background: red;
+	}
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div id="left-col" class="hid col-md-4 d-flex hid align-items-center justify-content-center flex-column">
+	<img src='https://cdn-icons-png.flaticon.com/512/2698/2698213.png' />
+	<span id='temp'>24 °C</span>
+	<span id='date'></span>
+</div>
+<div id='main-col' class='col-md-8 d-flex flex-column justify-content-start align-items-center p-5'>
+	<span id='month'></span>
+	<div id = 'top-row' class = 'row w-100'><div id = 'date' class = 'col-sm-12 d-flex align-items-center justify-content-center'></div></div>
+		<div id = 'bottom-row' class = 'row w-100'>
+			<div class = 'h-100 p-4'>
+				<div id = 'calendar' class = 'h-auto w-100 d-flex align-items-center flex-column justify-content-evenly p-3'>
+					<div id = 'weekdays' class = 'd-flex align-items-center justify-content-around h-auto w-100'>
+						<div>Mon</div>
+						<div>Tue</div>
+						<div>Wed</div>
+						<div>Thu</div>
+						<div>Fri</div>
+						<div>Sat</div>
+						<div>Sun</div>
+					</div>
+					<div id = 'days' class = 'd-flex align-items-center flex-wrap justify-content-evenly rounded-2 w-100'></div>
+				</div>
+			</div>
+		</div>
+</div>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+  
+      <script id="rendered-js" >
+const getDay = () => {
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let date = new Date();
+  let weekDay = days[date.getDay()];
+  let day = date.getDate();
+  let month = months[date.getMonth()];
+  let year = date.getUTCFullYear();
+  document.getElementById('date').innerText = `${weekDay} ${day}`;
+  document.getElementById('month').innerText = `${month} ${year}`;
+};
+getDay();
+
+const getCalendar = () => {
+  const date = new Date();
+  date.setDate(1);
+  const monthDays = document.getElementById('days');
+  const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+  const firstDayIndex = date.getDay();
+  const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+  const nextDays = 8 - lastDayIndex - 1;
+  let days = "";
+  for (let x = firstDayIndex; x > 1; x--) {if (window.CP.shouldStopExecution(0)) break;
+    days += `<div class = 'prev-date'><span id = 'calendar-span'>${prevLastDay - x + 2}</span></div>`;
+  }window.CP.exitedLoop(0);
+  for (let i = 1; i <= lastDay; i++) {if (window.CP.shouldStopExecution(1)) break;
+    if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
+      days += `<div id = 'today'><span id = 'today-span'>${i}</span></div>`;
+    } else {
+      days += `<div><span id = 'calendar-span'>${i}</span></div>`;
+    }
+  }window.CP.exitedLoop(1);
+  for (let j = 1; j <= nextDays; j++) {if (window.CP.shouldStopExecution(2)) break;
+    days += `<div class = 'next-date'><span id = 'calendar-span'>${j}</span></div>`;
+    monthDays.innerHTML = days;
+  }window.CP.exitedLoop(2);
+};
+getCalendar();
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
