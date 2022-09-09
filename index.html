@@ -1253,17 +1253,17 @@ function calculator() {
 }
 
 function files() {
-    new WinBox("comingsoon", {
+    new WinBox("Files", {
 
-        url: "comingsoon.html",
+        url: "apps/files.html",
         bottom: 80,
         background: "",
         max: false,
         class: ["no-full"],
         x: "center",
         y: "center",
-        width: "60%",
-        height: "65%"
+        width: "70%",
+        height: "75%"
     });
     dop();
 }
@@ -1401,9 +1401,10 @@ var sortable3 = new Sortable(startmen, {
     animation: 150
 });
 
-var tabs = document.getElementById('swpa');
+var tabs = document.getElementById('dop');
 var sortable4 = new Sortable(tabs, {
     swapThreshold: 1,
+    group: 'tabs',
     animation: 150
 });
 
